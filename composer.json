@@ -1,0 +1,25 @@
+{
+    "name": "richellin/php-slack-invite-automation",
+    "description": "slack invite automation",
+    "keywords": ["slack invaite automation"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sangjun",
+            "email": "richellin7@gmail.com"
+        }
+    ],
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "richellin\\chat\\": "src/chat"
+        }
+    }
+}
