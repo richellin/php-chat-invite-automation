@@ -15,7 +15,6 @@ composer install
 
 ```
 
-
 ### PHP
 ```php
 <?php
@@ -36,6 +35,8 @@ if($res === FALSE){
 }
 ```
 
+### Use
+[Laravel5 : laravel-slack-invite-automation](https://github.com/richellin/laravel-slack-invite-automation)
 
 ### Test
 ```sh
