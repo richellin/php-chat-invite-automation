@@ -2,7 +2,7 @@
 namespace richellin\chat;
 trait Curl{
     static public function request($type,$url,$data){
-        $html = '';
+        $html = false;
         if(function_exists('curl_version')){
             $type = mb_strtoupper($type,'UTF-8');
             $ch = curl_init($url);
