@@ -35,6 +35,8 @@ class Slack implements Channel
                 }else{
                     $this->err_msg = "Err : {$res['error']}";
                 }
+            }else{
+                $this->err_msg = "Err : Check Your Slack Configuration";
             }
         }
         
