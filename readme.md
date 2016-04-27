@@ -1,6 +1,9 @@
 # php-chat-invite-automation
 + Slack invite automation
 
+### Use
+[Laravel5 : laravel-slack-invite-automation](https://github.com/richellin/laravel-slack-invite-automation)
+
 ### Composer
 ```sh
 #composer.json
@@ -34,9 +37,6 @@ if($res === FALSE){
     echo $invite->errMsg();
 }
 ```
-
-### Use
-[Laravel5 : laravel-slack-invite-automation](https://github.com/richellin/laravel-slack-invite-automation)
 
 ### Test
 ```sh
