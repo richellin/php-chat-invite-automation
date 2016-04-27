@@ -6,7 +6,7 @@
 #composer.json
 {
     "require": {
-        "richellin/php-chat-invite-automation": "0.0.1"
+        "richellin/php-chat-invite-automation": "0.0.*"
     }
 }
 
