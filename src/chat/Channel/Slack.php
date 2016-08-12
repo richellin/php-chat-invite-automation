@@ -2,7 +2,6 @@
 namespace richellin\chat\Channel;
 
 use richellin\chat\Channel\Channel;
-use richellin\chat\Curl;
 
 class Slack implements Channel
 {
@@ -22,25 +21,30 @@ class Slack implements Channel
         $flg = false;
         if (self::validation()) {
             $url = str_replace('#team_name#', $this->set['team_name'], $this->url);
-            $data = [
-                'encoding'=>'gzip,deflate',
-                'q'=>[
+            
+            $client = new \GuzzleHttp\Client();
+            
+            $response = $client->request('POST', $url, [
+                'form_params' => [
                     'email' => $this->set['email'],
                     'channel' => $this->set['channel'],
                     'token' => $this->set['token'],
-                ],
-            ];
+                ]
+            ]);
             
-            $html = Curl::request('POST', $url, $data);
-            $res = json_decode($html, true);
-            if (isset($res['ok'])) {
-                if ($res['ok'] == true) {
-                    $flg = true;
-                } else {
-                    $this->err_msg = "Err : {$res['error']}";
+            $status_code = $response->getStatusCode();
+            
+            if ($status_code === 200) {
+                $res = json_decode($response->getBody(), true);
+                if (isset($res['ok'])) {
+                    if ($res['ok'] === true) {
+                        $flg = true;
+                    } else {
+                        $this->err_msg = "Err : {$res['error']}";
+                    }
                 }
             } else {
-                $this->err_msg = "Err : not found curl";
+                $this->err_msg = "Err : {$status_code} code";
             }
         }
         
