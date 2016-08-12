@@ -1,7 +1,9 @@
 <?php
 namespace richellin\chat\Channel;
+
 use richellin\chat\Channel\Channel;
 use richellin\chat\Curl;
+
 class Slack implements Channel
 {
     private $set = array();
@@ -9,14 +11,16 @@ class Slack implements Channel
     private $url = 'https://#team_name#.slack.com/api/users.admin.invite';
     private $err_msg = '';
     
-    public function set($set) {
+    public function set($set)
+    {
         $this->set = $set;
         return $this;
     }
     
-    public function send() {
-        $flg = FALSE;
-        if(self::validation()){
+    public function send()
+    {
+        $flg = false;
+        if (self::validation()) {
             $url = str_replace('#team_name#', $this->set['team_name'], $this->url);
             $data = [
                 'encoding'=>'gzip,deflate',
@@ -28,14 +32,14 @@ class Slack implements Channel
             ];
             
             $html = Curl::request('POST', $url, $data);
-            $res = json_decode($html,TRUE);
-            if(isset($res['ok'])){
-                if($res['ok'] == TRUE){
-                    $flg = TRUE;
-                }else{
+            $res = json_decode($html, true);
+            if (isset($res['ok'])) {
+                if ($res['ok'] == true) {
+                    $flg = true;
+                } else {
                     $this->err_msg = "Err : {$res['error']}";
                 }
-            }else{
+            } else {
                 $this->err_msg = "Err : not found curl";
             }
         }
@@ -43,22 +47,24 @@ class Slack implements Channel
         return $flg;
     }
     
-    public function errMsg() {
+    public function errMsg()
+    {
         return $this->err_msg;
     }
     
-    public function validation() {
-        $flg = TRUE;
+    public function validation()
+    {
+        $flg = true;
         foreach ($this->validation as $name) {
-            if(!isset($this->set[$name])){
+            if (!isset($this->set[$name])) {
                 $this->err_msg = "Set {$name} in parameter!";
-                $flg = FALSE;
-            }else if(trim($this->set[$name]) == ''){
+                $flg = false;
+            } elseif (trim($this->set[$name]) == '') {
                 $this->err_msg = "Set {$name} in parameter!";
-                $flg = FALSE;
+                $flg = false;
             }
             
-            if($flg == FALSE){
+            if ($flg == false) {
                 break;
             }
         }

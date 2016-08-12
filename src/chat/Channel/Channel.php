@@ -1,5 +1,6 @@
 <?php
 namespace richellin\chat\Channel;
+
 interface Channel
 {
     public function set($set);

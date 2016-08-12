@@ -2,6 +2,7 @@
 require 'vendor/autoload.php';
 use \richellin\chat\Invite;
 use \richellin\chat\Channel\Slack;
+
 $invite = new Invite();
 $res = $invite->channel(new Slack())
               ->set([
@@ -11,6 +12,6 @@ $res = $invite->channel(new Slack())
                 'token'=> 'xoxp-token'
                 ])
               ->send();
-if($res === FALSE){
+if ($res === false) {
     echo $invite->errMsg();
 }

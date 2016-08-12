@@ -33,7 +33,7 @@ $res = $invite->channel(new Slack())
                 'token'=> 'xoxp-token'
                 ])
               ->send();
-if($res === FALSE){
+if ($res === FALSE) {
     echo $invite->errMsg();
 }
 ```

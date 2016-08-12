@@ -1,6 +1,7 @@
 <?php
 use \richellin\chat\Invite;
-Class inviteTest extends PHPUnit_Framework_TestCase
+
+class InviteTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @test

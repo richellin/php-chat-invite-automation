@@ -1,7 +1,8 @@
 <?php
 use \richellin\chat\Invite;
 use \richellin\chat\Channel\Slack;
-Class slackTest extends PHPUnit_Framework_TestCase
+
+class slackTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -14,7 +15,6 @@ Class slackTest extends PHPUnit_Framework_TestCase
             'channel'=> 'Channel',
             'token'=> 'xoxp-token'
         ]);
-        
     }
     
     public function testInstanceOf()
@@ -38,6 +38,6 @@ Class slackTest extends PHPUnit_Framework_TestCase
     
     public function testValidation()
     {
-        $this->assertEquals(TRUE, $this->channel->validation());
+        $this->assertEquals(true, $this->channel->validation());
     }
 }
