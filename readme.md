@@ -1,8 +1,13 @@
 # php-chat-invite-automation
 + Slack invite automation
 
-### Use
+### Example
 [Laravel5 : laravel-slack-invite-automation](https://github.com/richellin/laravel-slack-invite-automation)
+
+### Use
+```
+"guzzlehttp/guzzle": "^6.2"
+```
 
 ### Composer
 ```sh
